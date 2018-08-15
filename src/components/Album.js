@@ -16,7 +16,8 @@ import PlayerBar from './PlayerBar';
             currentSong: album.songs[0],
             currentTime: 0,
             duration: album.songs[0].duration,
-            isPlaying: false
+            isPlaying: false,
+            currentVolume: 1.0
         };
         
         this.audioElement = document.createElement('audio');
@@ -33,6 +34,7 @@ import PlayerBar from './PlayerBar';
         this.setState({ isPlaying: false });
     }
 
+
     componentDidMount() {
         this.eventListeners = {
             timeupdate: e => {
@@ -40,16 +42,22 @@ import PlayerBar from './PlayerBar';
             },
             durationchange: e => {
                 this.setState({ duration: this.audioElement.duration });
+            },
+            volumechange: e => {
+                this.setState({ currentVolume: this.audioElement.currentVolume });
             }
         };
         this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
         this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
+        this.audioElement.addEventListener('volumechange', this.eventListeners.volumechange);
+        this.audioElement.volume=this.state.currentVolume
     }
 
     componentWillUnmount() {
         this.audioElement.src = null;
         this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
         this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
+        this.audioElement.removeEventListener('volumechange', this.eventListeners.volumechange);
     }
 
     setSong(song) {
@@ -90,6 +98,17 @@ import PlayerBar from './PlayerBar';
         this.setState({ currentTime: newTime });
     }
 
+    setVolume(e) {
+        const changedVolume = e.target.value;
+        console.log(changedVolume);
+        this.audioElement.volume = changedVolume;
+        this.setState({ currentVolume: changedVolume });
+    }
+
+    formatTime(time) {
+        return Math.floor(time / 60) + ':' + ('0' + Math.floor(time % 60)).slice(-2)
+    }
+
     render() {
         return (
             <section className="album">
@@ -121,7 +140,7 @@ import PlayerBar from './PlayerBar';
                                 <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
                                 <td>{index + 1}</td>
                                 <td>{song.title}</td>
-                                <td>{song.duration}</td>
+                                <td>{this.formatTime(song.duration)}</td>
                                 </tr>
                             )}
                         </tbody>
@@ -129,12 +148,16 @@ import PlayerBar from './PlayerBar';
                     <PlayerBar
                         isPlaying={this.state.isPlaying}
                         currentSong={this.state.currentSong}
+                        prettyCurrentTime={this.formatTime(this.state.currentTime)}
                         currentTime={this.audioElement.currentTime}
+                        prettyDuration={this.formatTime(this.state.duration)}
                         duration={this.audioElement.duration}
+                        currentVolume={this.state.currentVolume}
                         handleSongClick={() => this.handleSongClick(this.state.currentSong)}
                         handlePrevClick={() => this.handlePrevClick()}
                         handleNextClick={() => this.handleNextClick()}
                         handleTimeChange={(e) => this.handleTimeChange(e)}
+                        setVolume={(e) => this.setVolume(e)}
                     />
                 </section>
             </section>
