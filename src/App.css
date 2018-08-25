@@ -1,28 +1,183 @@
-.App {
+h1 {
   text-align: center;
 }
 
+.Hero-image {
+  display: flex;
+  height: 200px;
+  background-image: url(mark-solarski-183866-unsplash.jpg);
+  background-size: auto;
+  align-items: center;
+}
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.App nav {
+  display: flex;
+  background-color: blue;
+  align-items: center;
+}
+
+.selling-points {
+  background-color: black;
+  height: 300px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+}
+
+.selling-points .point {
+  display: flex;
+  text-align: center;
+  width: 33%;
+  flex-basis: 33%;
+  flex-direction: column;
+}
+
+.selling-points .point> div {
+  font-size: 4em;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+a {
+  display: flex;
+  margin: auto;
+  padding: 10px 25% 10px 20%;
+
 }
 
-.App-intro {
-  font-size: large;
+a:visited {
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.App .album a {
+  color: black;
+}
+
+.App .album a:visited {
+  color: black;
+
+
+}
+
+.library {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-weight: bold;
+}
+
+.library img {
+  display: flex;
+  padding: 20px;
+  background-color: black;
+  flex-direction: column;
+  height: 150px;
+}
+
+.library div {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  margin: 20px;
+  width: auto;
+}
+
+.library a {
+  display: flex;
+  flex-direction: row;
+  size: 100px;
+  color: black;
+}
+
+/*
+.library a:visited {
+  display: flex;
+  color: white;
+}*/
+
+.library a {
+  display: flex;
+  font-size: auto;
+}
+
+.album {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.album h2 {
+  text-align: center;
+}
+
+#album-title {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2em;
+}
+
+#artist {
+  display: block;
+  text-align: center;
+  font-size: 2em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.album #release-info {
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2em;
+}
+
+.album  img {
+  display: flex;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  height: 150px;
+  background-color: black;
+}
+
+#song-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.player-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.player-bar #time-control {
+  display: flex;
+  margin: 5px;
+  padding: 10px;
+}
+
+.player-bar #volume-control {
+  display: flex;
+  margin: 5px 5px 20px 5px;
 }

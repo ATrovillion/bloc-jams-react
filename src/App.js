@@ -14,7 +14,12 @@ class App extends Component {
             <Link to='/'>Landing</Link>
             <Link to='/library'>Library</Link>
           </nav>
-          <h1>Bloc Jams</h1>
+          <div className="Hero-image">
+            <div className="App-logo">
+              <img src={require('./bloc-jams-logo.png')} alt="Bloc Jams logo" />
+            </div>
+          </div>
+          {/*<h1>Bloc Jams</h1>*/}
         </header>
         <main>
           <Route exact path="/" component={Landing} />
